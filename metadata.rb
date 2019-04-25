@@ -2,9 +2,9 @@ name 'jenkins_integration_accelerator'
 maintainer 'H. John Chiao'
 maintainer_email 'jchiao@chef.io'
 license 'All Rights Reserved'
-description 'Installs/Configures jenkins_integration_accelerator'
-long_description 'Installs/Configures jenkins_integration_accelerator'
-version '0.1.0'
+description 'Configures jenkins_pipeline_accelerator'
+long_description 'The purpose for this repo is to build an example for Jenkin Pipeline with Jenkinsfile. An accelerator is to make our engagement more effective and efficient'
+version '0.2.0'
 chef_version '>= 13.0'
 
 # The `issues_url` points to the location where issues for this cookbook are

@@ -1,8 +1,8 @@
 pipeline {
-    // The running agent is the master in this case, usually will assign to node
+    // The running agent is node labled as a "master", in this case, it the master. It can also assign to multiple workers or groups.
     agent { label "master"}
     stages {
-        // Delete the workspace for duplicate configuration
+        // Delete the workspace for duplicate configuration which may cause an error.
         stage('Delete the workspace'){
             steps {
               sh "sudo rm -rf $WORKSPACE/*"
