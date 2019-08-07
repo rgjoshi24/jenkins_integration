@@ -19,8 +19,8 @@ pipeline {
                     } else{ 
                         echo "Install ChefDK"
                         sh 'sudo yum install -y wget'
-                        sh 'wget https://packages.chef.io/files/stable/chefdk/3.9.0/ubuntu/18.04/chefdk_3.9.0-1_amd64.deb'
-                        sh 'sudo dpkg -i chefdk_3.9.0-1_amd64.deb'
+                        sh 'wget https://packages.chef.io/files/stable/chefdk/4.2.0/el/7/chefdk-4.2.0-1.el7.x86_64.rpm'
+                        sh 'sudo rpm -Uvh chefdk-4.2.0-1.el7.x86_64.rpm'
                     }
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
         // Download Apache Cookbook. Have to clone the apache cookbook into your own repo first
         stage('Download Apache Cookbook'){
             steps {
-                git credentialsId: 'git-repo-creds', url: 'git@github.com:hchiao1/apache.git'
+                git credentialsId: 'git-repo-creds', url: 'git@github.com:rgjoshi24/learn_chef_httpd.git'
             }
         }
 
@@ -51,18 +51,18 @@ pipeline {
         }
 
         // Notice the Slacke channel
-        stage ("Notice Slack Channel"){
-            steps{
-                slackSend message: 'Student-7: Please approve ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.JOB_URL} | Open>)'
-            }
-        }
+        //stage ("Notice Slack Channel"){
+            //steps{
+                //slackSend message: 'Student-7: Please approve ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.JOB_URL} | Open>)'
+            //}
+        //}
 
         // Wait for approval, please go ahead on the Jenkins UI
-        stage ("Wait for approval"){
-            steps{
-                input 'Please approve this build'
-            }
-        }
+        //stage ("Wait for approval"){
+            //steps{
+                //input 'Please approve this build'
+            //}
+        //}
 
         // Upload to the Chef Server, and start converage node
         stage ("Upload the Chef Server, Converge Nodes"){
