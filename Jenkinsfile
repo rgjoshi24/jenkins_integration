@@ -18,7 +18,7 @@ pipeline {
                         echo "Skipping ChefDK install - already installed"
                     } else{ 
                         echo "Install ChefDK"
-                        sh 'sudo apt-get install -y wget'
+                        sh 'sudo yum install -y wget'
                         sh 'wget https://packages.chef.io/files/stable/chefdk/3.9.0/ubuntu/18.04/chefdk_3.9.0-1_amd64.deb'
                         sh 'sudo dpkg -i chefdk_3.9.0-1_amd64.deb'
                     }
@@ -36,8 +36,8 @@ pipeline {
         stage ('Install Ruby, Test Kitchen and needed Ruby gems'){
             steps{
                 sh 'sudo usermod -aG root,docker tomcat'
-                sh 'sudo apt-get install rubygems -y'
-                sh 'sudo apt-get install ruby-dev -y'
+                sh 'sudo yum install rubygems -y'
+                sh 'sudo yum install ruby-dev -y'
                 sh 'sudo gem install bundler -v 2.0.1 --no-doc'
                 sh 'bundle install'
             }
