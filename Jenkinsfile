@@ -28,7 +28,7 @@ pipeline {
         // Download Apache Cookbook. Have to clone the apache cookbook into your own repo first
         stage('Download Apache Cookbook'){
             steps {
-                git credentialsId: 'git-repo-creds', url: 'git@github.com:rgjoshi24/learn_chef_httpd.git'
+                git credentialsId: 'github_cred', url: 'git@github.com:rgjoshi24/learn_chef_httpd.git'
             }
         }
 
